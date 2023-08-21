@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import FormPage from "./FormPage";
 
 function App() {
+  const [page, setPage] = useState(0);
+  const [formData, setFormData] = useState({});
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FormPage
+        page={page}
+        setPage={setPage}
+        formData={formData}
+        setFormData={setFormData}
+      />
+      {/* Display submitted form data */}
+      <div>
+        <h2>Submitted Form:</h2>
+        <pre>{JSON.stringify(formData, null, 2)}</pre>
+      </div>
     </div>
   );
 }
